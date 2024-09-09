@@ -47,8 +47,8 @@ function WatchList({ watchlist, setWatchlist, handleRemoveFromWatchlist }) {
               onClick={() => handleFilter(genre)}
               className={
                 currGenre == genre
-                  ? "flex justify-center h-[2.5rem] w-[7rem] items-center bg-blue-400 rounded-xl text-white font-bold m-4"
-                  : "flex justify-center h-[2.5rem] w-[7rem] items-center bg-gray-400 rounded-xl text-white font-bold m-4 "
+                  ? "flex justify-center h-[2.5rem] w-[7rem] items-center bg-blue-400 rounded-xl text-white font-bold m-4 cursor-pointer"
+                  : "flex justify-center h-[2.5rem] w-[7rem] items-center bg-gray-400 rounded-xl text-white font-bold m-4 cursor-pointer"
               }
             >
               {genre}
@@ -116,7 +116,7 @@ function WatchList({ watchlist, setWatchlist, handleRemoveFromWatchlist }) {
                     <td>{genreids[movieObj.genre_ids[0]]}</td>
                     <td
                       onClick={() => handleRemoveFromWatchlist(movieObj)}
-                      className="text-red-800"
+                      className="text-red-800 cursor-pointer"
                     >
                       Delete
                     </td>
