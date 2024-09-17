@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"; // BrowseRouter
 import Banner from "./components/Banner";
 import UseEffects from "./components/useEffects";
 import SignUp from "./components/SignUp";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
    const [login, setLogin] = useState(false);
@@ -46,7 +47,7 @@ function App() {
   },[])
 
   return (
-    <BrowserRouter>
+    <div>
       <Navbar login={login} handleLogin={handleLogin} />
       <Routes>
         <Route
@@ -58,13 +59,20 @@ function App() {
             </>
           }
         ></Route>
-        { login && <Route path="/watchlist" element={<WatchList  watchlist={watchlist} setWatchlist={setWatchlist} handleRemoveFromWatchlist={handleRemoveFromWatchlist} />}></Route> }
-        {!login && <Route path="/watchlist" element={<Login login={login} setLogin={setLogin} />}></Route>}
+        <Route path="/watchlist" element={
+          <RequireAuth login={login}>
+            < WatchList watchlist={watchlist} setWatchlist={setWatchlist} handleRemoveFromWatchlist={handleRemoveFromWatchlist}/>
+          </RequireAuth> }
+          />
+        {/* Below two lines code replaced by RequireAuth */}
+        {/* { login && <Route path="/watchlist" element={<WatchList  watchlist={watchlist} setWatchlist={setWatchlist} handleRemoveFromWatchlist={handleRemoveFromWatchlist} />}></Route> }
+        {!login && <Route path="/watchlist" element={<Login login={login} setLogin={setLogin} />}></Route>} */}
+
         <Route path="/login" element={< Login login={login} setLogin={setLogin} />} />
         <Route path="/signup" element={< SignUp/>} />
         
         </Routes>
-    </BrowserRouter>
+    </div>
     // <>
     //   <UseEffects />
     // </>
