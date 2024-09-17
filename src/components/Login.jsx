@@ -35,7 +35,7 @@ function Login({login,setLogin}) {
     if (isValid) {
       setLogin(true);
       console.log(login)
-      navigate("/");
+      navigate("/watchlist");
     } else {
       console.log(error);
     }
